@@ -1,4 +1,4 @@
-
+1.	A query to find the top 10 countries for Rockbuster in terms of customer numbers. 
 
 SELECT  
   ct.city AS city,
@@ -14,6 +14,7 @@ ORDER BY num_of_customers DESC
 LIMIT 10
 
 
+2. A query to find the top 10 cities within the top 10 countries identified in step 1
 
 SELECT  
   c.customer_id,
