@@ -1,0 +1,53 @@
+Summary for film: 
+
+SELECT 
+ MIN(film_id) AS min_filmid,
+ AVG(film_id) AS avg_filmid,
+ MAX(film_id) AS max_filmid,
+ MIN(release_year) AS min_ryear,
+ AVG(release_year) AS avg_ryear,
+ MAX(release_year) AS max_ryear,
+ MIN(language_id) AS min_langid,
+ AVG(language_id) AS avg_langid,
+ MAX(language_id) AS max_langid,
+ MIN(rental_duration) AS min_rduration,
+ AVG(rental_duration) AS avg_rduration,
+ MAX(rental_duration) AS max_rduration,
+ MIN(rental_rate) AS min_rentalrate,
+ AVG(rental_rate) AS avg_rentalrate,
+ MAX(rental_rate) AS max_rentalrate,
+ MIN(length) AS min_len,
+ AVG(length) avg_len,
+ MAX(length) max_len,
+ MIN(replacement_cost) AS min_rcost,
+ AVG(replacement_cost) AS avg_rcost,
+ MAX(replacement_cost) AS max_rcost,
+ 
+MODE()WITHIN GROUP(ORDER BY title) AS mode_title,
+ MODE()WITHIN GROUP(ORDER BY rating) AS mode_rating,
+ MODE()WITHIN GROUP(ORDER BY special_features) AS mode_features,
+ MODE()WITHIN GROUP(ORDER BY fulltext) AS mode_fulltext
+
+FROM film
+
+Summary for customer:
+
+SELECT 
+  MIN(customer_id) AS min_cust_id,
+  AVG(customer_id) AS avg_cust_id,
+  MAX(customer_id) AS max_cust_id,
+  MIN(store_id) AS min_store_id,
+  AVG(store_id) AS avg_store_id,
+  MAX(store_id) AS max_store_id,
+  MODE()WITHIN GROUP(ORDER BY first_name) AS mode_first_name,
+  MODE()WITHIN GROUP(ORDER BY last_name) AS mode_last_name,
+  MODE()WITHIN GROUP(ORDER BY email) AS mode_email,
+  MIN(address_id) AS min_add_id,
+  AVG(address_id) AS avg_add_id,
+  MAX(address_id) AS max_add_id,
+  MODE()WITHIN GROUP(ORDER BY activebool) AS mode_active_bool,
+  MODE()WITHIN GROUP(ORDER BY create_date) AS mode_create_date,
+  MODE()WITHIN GROUP(ORDER BY last_update) AS last_update,
+  MODE()WITHIN GROUP(ORDER BY active) AS mode_active
+  FROM customer
+
