@@ -1,0 +1,33 @@
+
+
+SELECT  
+  ct.city AS city,
+  country.country AS country,
+  COUNT(c.customer_id) AS num_of_customers  
+FROM customer c INNER JOIN address a
+ON c.address_id=a.address_id
+INNER JOIN city ct ON a.city_id=ct.city_id
+INNER JOIN country ON ct.country_id=country.country_id
+WHERE country IN ('India', 'China', 'United States','Japan','Mexico','Brazil','Russian Federation','Philippines','Turkey','Indonesia' )
+GROUP BY city,country
+ORDER BY num_of_customers DESC
+LIMIT 10
+
+
+
+SELECT  
+  c.customer_id,
+  c.first_name,
+  c.last_name, 
+  country.country AS country,
+  ct.city AS city,
+  SUM(p.amount) AS total_payment
+FROM payment p INNER JOIN customer c ON p.customer_id=c.customer_id
+INNER JOIN address a
+ON c.address_id=a.address_id
+INNER JOIN city ct ON a.city_id=ct.city_id
+INNER JOIN country ON ct.country_id=country.country_id
+WHERE city IN ('Aurora','Atlixco', 'Xintai', 'Adoni','Dhule (Dhulia)','Kurashiki','Pingxiang','Sivas','Celaya','So Leopoldo' )
+GROUP BY c.customer_id,c.first_name,c.last_name,country,city
+ORDER BY total_payment DESC
+LIMIT 5
